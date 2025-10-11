@@ -1,0 +1,12 @@
+{
+    "name": "IR3_Assets_mining_drills",
+    "version": "0.0.1",
+    "title": "IR3 Assets: mining drills",
+    "author": "0n0w1c",
+    "description": "Reskins the mining drills\nRequires the manual installation of IR3 Assets",
+    "factorio_version": "2.0",
+    "dependencies": [
+        "base",
+        "IR3_Assets_some_assembly_required"
+    ]
+}
