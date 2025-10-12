@@ -7,6 +7,7 @@
     "factorio_version": "2.0",
     "dependencies": [
         "base",
-        "IR3_Assets_some_assembly_required"
+        "IR3_Assets_some_assembly_required",
+        "? space-age"
     ]
 }
