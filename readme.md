@@ -12,9 +12,10 @@ For licensing concerns: [FAQ](https://mods.factorio.com/mod/IR3_Assets_mining_dr
 
 See the mod [IR3 Assets: Some assembly required](https://mods.factorio.com/mod/IR3_Assets_some_assembly_required)
 
-* Startup setting to select the size of the Burner mining drill (default: 2x2).  
-* Startup setting to select the size of the Electric mining drill (default: 3x3).  
-* Startup setting to select the size of the Big mining drill (default: 5x5).  
+#### Startup settings to select the mining drill size:  
+* Burner mining drill (default: 2x2) 
+* Electric mining drill (default: 3x3) 
+* Big mining drill (default: 5x5) 
 
 Note: Startup menu simulations will be disturbed by changing mining drill size.
 
