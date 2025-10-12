@@ -63,6 +63,7 @@ local function shift_pair(p, dx, dy)
         p[1] = p[1] + dx; p[2] = p[2] + dy
     end
 end
+
 local function shift_connector_entry(entry, dx, dy)
     if not entry then return end
     if entry.sprites then
@@ -196,28 +197,28 @@ data:extend({
                 { position = { 0, connection_shift },  direction = defines.direction.south },
             },
             pipe_covers = {
-                east = {
-                    layers = {
-                        { filename = "__IndustrialRevolution3Assets2__/graphics/entities/pipes/pipe-iron-ce.png",   width = 180, height = 120, priority = "extra-high", scale = 0.5, shift = { -1, 0 } },
-                        { filename = "__IndustrialRevolution3Assets2__/graphics/entities/pipes/pipe-shadow-ce.png", width = 180, height = 120, priority = "extra-high", scale = 0.5, shift = { 0, 0 }, draw_as_shadow = true },
-                    }
-                },
                 north = {
                     layers = {
                         { filename = "__IndustrialRevolution3Assets2__/graphics/entities/pipes/pipe-iron-cn.png",   width = 180, height = 120, priority = "extra-high", scale = 0.5, shift = { 0, 1 } },
-                        { filename = "__IndustrialRevolution3Assets2__/graphics/entities/pipes/pipe-shadow-cn.png", width = 180, height = 120, priority = "extra-high", scale = 0.5, shift = { 0, 0 }, draw_as_shadow = true },
+                        { filename = "__IndustrialRevolution3Assets2__/graphics/entities/pipes/pipe-shadow-cn.png", width = 180, height = 120, priority = "extra-high", scale = 0.5, shift = { 0, 1 }, draw_as_shadow = true },
+                    }
+                },
+                east = {
+                    layers = {
+                        { filename = "__IndustrialRevolution3Assets2__/graphics/entities/pipes/pipe-iron-ce.png",   width = 180, height = 120, priority = "extra-high", scale = 0.5, shift = { -1, 0 } },
+                        { filename = "__IndustrialRevolution3Assets2__/graphics/entities/pipes/pipe-shadow-ce.png", width = 180, height = 120, priority = "extra-high", scale = 0.5, shift = { -1, 0 }, draw_as_shadow = true },
                     }
                 },
                 south = {
                     layers = {
                         { filename = "__IndustrialRevolution3Assets2__/graphics/entities/pipes/pipe-iron-cs.png",   width = 180, height = 120, priority = "extra-high", scale = 0.5, shift = { 0, -1 } },
-                        { filename = "__IndustrialRevolution3Assets2__/graphics/entities/pipes/pipe-shadow-cs.png", width = 180, height = 120, priority = "extra-high", scale = 0.5, shift = { 0, 0 }, draw_as_shadow = true },
+                        { filename = "__IndustrialRevolution3Assets2__/graphics/entities/pipes/pipe-shadow-cs.png", width = 180, height = 120, priority = "extra-high", scale = 0.5, shift = { 0, -1 }, draw_as_shadow = true },
                     }
                 },
                 west = {
                     layers = {
                         { filename = "__IndustrialRevolution3Assets2__/graphics/entities/pipes/pipe-iron-cw.png",   width = 180, height = 120, priority = "extra-high", scale = 0.5, shift = { 1, 0 } },
-                        { filename = "__IndustrialRevolution3Assets2__/graphics/entities/pipes/pipe-shadow-cw.png", width = 180, height = 120, priority = "extra-high", scale = 0.5, shift = { 0, 0 }, draw_as_shadow = true },
+                        { filename = "__IndustrialRevolution3Assets2__/graphics/entities/pipes/pipe-shadow-cw.png", width = 180, height = 120, priority = "extra-high", scale = 0.5, shift = { 1, 0 }, draw_as_shadow = true },
                     }
                 }
             }
@@ -363,21 +364,21 @@ data:extend({
                     always_draw = true,
                     render_layer = "object",
 
-                    east_animation = {
-                        layers = {
-                            { filename = "__IndustrialRevolution3Assets4__/graphics/entities/machines/drills/iron-drill-underlay-east-shadow.png", priority = "high", width = 384, height = 384, frame_count = 1,  line_length = 1,  repeat_count = 118,                 animation_speed = 0.5, scale = 0.5, shift = { 0, 0 },    draw_as_shadow = true },
-                            { filename = "__IndustrialRevolution3Assets4__/graphics/entities/machines/drills/iron-drill-underlay-east.png",        priority = "high", width = 384, height = 384, frame_count = 1,  line_length = 1,  repeat_count = 118,                 animation_speed = 0.5, scale = 0.5, shift = { 0, 0 } },
-                            { filename = "__IndustrialRevolution3Assets4__/graphics/entities/machines/drills/iron-drill-shadow.png",               priority = "high", width = 384, height = 224, frame_count = 60, line_length = 6,  run_mode = "forward-then-backward", animation_speed = 0.5, scale = 0.5, shift = { 1, 0 },    draw_as_shadow = true },
-                            { filename = "__IndustrialRevolution3Assets4__/graphics/entities/machines/drills/iron-drill-base.png",                 priority = "high", width = 256, height = 256, frame_count = 60, line_length = 10, run_mode = "forward-then-backward", animation_speed = 0.5, scale = 0.5, shift = { 0, -0.75 } },
-                        }
-                    },
-
                     north_animation = {
                         layers = {
                             { filename = "__IndustrialRevolution3Assets4__/graphics/entities/machines/drills/iron-drill-underlay-north-shadow.png", priority = "high", width = 384, height = 384, frame_count = 1,  line_length = 1,  repeat_count = 118,                 animation_speed = 0.5, scale = 0.5, shift = { 0, 0 },    draw_as_shadow = true },
                             { filename = "__IndustrialRevolution3Assets4__/graphics/entities/machines/drills/iron-drill-underlay-north.png",        priority = "high", width = 384, height = 384, frame_count = 1,  line_length = 1,  repeat_count = 118,                 animation_speed = 0.5, scale = 0.5, shift = { 0, 0 } },
                             { filename = "__IndustrialRevolution3Assets4__/graphics/entities/machines/drills/iron-drill-shadow.png",                priority = "high", width = 384, height = 224, frame_count = 60, line_length = 6,  run_mode = "forward-then-backward", animation_speed = 0.5, scale = 0.5, shift = { 1, 0 },    draw_as_shadow = true },
                             { filename = "__IndustrialRevolution3Assets4__/graphics/entities/machines/drills/iron-drill-base.png",                  priority = "high", width = 256, height = 256, frame_count = 60, line_length = 10, run_mode = "forward-then-backward", animation_speed = 0.5, scale = 0.5, shift = { 0, -0.75 } },
+                        }
+                    },
+
+                    east_animation = {
+                        layers = {
+                            { filename = "__IndustrialRevolution3Assets4__/graphics/entities/machines/drills/iron-drill-underlay-east-shadow.png", priority = "high", width = 384, height = 384, frame_count = 1,  line_length = 1,  repeat_count = 118,                 animation_speed = 0.5, scale = 0.5, shift = { 0, 0 },    draw_as_shadow = true },
+                            { filename = "__IndustrialRevolution3Assets4__/graphics/entities/machines/drills/iron-drill-underlay-east.png",        priority = "high", width = 384, height = 384, frame_count = 1,  line_length = 1,  repeat_count = 118,                 animation_speed = 0.5, scale = 0.5, shift = { 0, 0 } },
+                            { filename = "__IndustrialRevolution3Assets4__/graphics/entities/machines/drills/iron-drill-shadow.png",               priority = "high", width = 384, height = 224, frame_count = 60, line_length = 6,  run_mode = "forward-then-backward", animation_speed = 0.5, scale = 0.5, shift = { 1, 0 },    draw_as_shadow = true },
+                            { filename = "__IndustrialRevolution3Assets4__/graphics/entities/machines/drills/iron-drill-base.png",                 priority = "high", width = 256, height = 256, frame_count = 60, line_length = 10, run_mode = "forward-then-backward", animation_speed = 0.5, scale = 0.5, shift = { 0, -0.75 } },
                         }
                     },
 
@@ -424,17 +425,6 @@ data:extend({
                     always_draw = true,
                     secondary_draw_order = -50,
 
-                    east_animation = {
-                        layers = {
-                            { filename = "__IndustrialRevolution3Assets4__/graphics/entities/machines/drills/iron-drill-patch-east-shadow.png", priority = "high", width = 448, height = 384, repeat_count = 118, animation_speed = 0.5, scale = 0.5, shift = { 0.5, 0 },    draw_as_shadow = true },
-                            { filename = "__IndustrialRevolution3Assets4__/graphics/entities/machines/drills/iron-drill-connector-north.png",   priority = "high", width = 80,  height = 192, repeat_count = 118, animation_speed = 0.5, scale = 0.5, shift = { 0, -1.5 } },
-                            { filename = "__IndustrialRevolution3Assets4__/graphics/entities/machines/drills/iron-drill-connector-south.png",   priority = "high", width = 80,  height = 192, repeat_count = 118, animation_speed = 0.5, scale = 0.5, shift = { 0, 1.5 } },
-                            { filename = "__IndustrialRevolution3Assets4__/graphics/entities/machines/drills/iron-drill-connector-west.png",    priority = "high", width = 192, height = 80,  repeat_count = 118, animation_speed = 0.5, scale = 0.5, shift = { -1.5, 0 } },
-                            { filename = "__IndustrialRevolution3Assets4__/graphics/entities/machines/drills/iron-drill-pipes-nw.png",          priority = "high", width = 192, height = 192, repeat_count = 118, animation_speed = 0.5, scale = 0.5, shift = { -1.5, -1.5 } },
-                            { filename = "__IndustrialRevolution3Assets4__/graphics/entities/machines/drills/iron-drill-pipes-sw.png",          priority = "high", width = 192, height = 192, repeat_count = 118, animation_speed = 0.5, scale = 0.5, shift = { -1.5, 1.5 } },
-                        }
-                    },
-
                     north_animation = {
                         layers = {
                             { filename = "__IndustrialRevolution3Assets4__/graphics/entities/machines/drills/iron-drill-patch-north-shadow.png", priority = "high", width = 448, height = 384, repeat_count = 118, animation_speed = 0.5, scale = 0.5,                        shift = { 0.5, 0 },    draw_as_shadow = true },
@@ -444,6 +434,17 @@ data:extend({
                             { filename = "__IndustrialRevolution3Assets4__/graphics/entities/machines/drills/iron-drill-pipes-se.png",           priority = "high", width = 192, height = 192, repeat_count = 118, animation_speed = 0.5, scale = 0.5,                        shift = { 1.5, 1.5 } },
                             { filename = "__IndustrialRevolution3Assets4__/graphics/entities/machines/drills/iron-drill-pipes-sw.png",           priority = "high", width = 192, height = 192, repeat_count = 118, animation_speed = 0.5, scale = 0.5,                        shift = { -1.5, 1.5 } },
                             { filename = "__IndustrialRevolution3Assets4__/graphics/entities/machines/drills/iron-drill-pipes-shadow-se.png",    priority = "high", width = 64,  height = 128, frame_count = 60,   line_length = 10,      run_mode = "forward-then-backward", animation_speed = 0.5, scale = 0.5,          shift = { 2, 1 } },
+                        }
+                    },
+
+                    east_animation = {
+                        layers = {
+                            { filename = "__IndustrialRevolution3Assets4__/graphics/entities/machines/drills/iron-drill-patch-east-shadow.png", priority = "high", width = 448, height = 384, repeat_count = 118, animation_speed = 0.5, scale = 0.5, shift = { 0.5, 0 },    draw_as_shadow = true },
+                            { filename = "__IndustrialRevolution3Assets4__/graphics/entities/machines/drills/iron-drill-connector-north.png",   priority = "high", width = 80,  height = 192, repeat_count = 118, animation_speed = 0.5, scale = 0.5, shift = { 0, -1.5 } },
+                            { filename = "__IndustrialRevolution3Assets4__/graphics/entities/machines/drills/iron-drill-connector-south.png",   priority = "high", width = 80,  height = 192, repeat_count = 118, animation_speed = 0.5, scale = 0.5, shift = { 0, 1.5 } },
+                            { filename = "__IndustrialRevolution3Assets4__/graphics/entities/machines/drills/iron-drill-connector-west.png",    priority = "high", width = 192, height = 80,  repeat_count = 118, animation_speed = 0.5, scale = 0.5, shift = { -1.5, 0 } },
+                            { filename = "__IndustrialRevolution3Assets4__/graphics/entities/machines/drills/iron-drill-pipes-nw.png",          priority = "high", width = 192, height = 192, repeat_count = 118, animation_speed = 0.5, scale = 0.5, shift = { -1.5, -1.5 } },
+                            { filename = "__IndustrialRevolution3Assets4__/graphics/entities/machines/drills/iron-drill-pipes-sw.png",          priority = "high", width = 192, height = 192, repeat_count = 118, animation_speed = 0.5, scale = 0.5, shift = { -1.5, 1.5 } },
                         }
                     },
 
@@ -476,16 +477,16 @@ data:extend({
                 {
                     always_draw = true,
                     apply_tint = "input-fluid-base-color",
-                    east_animation = {
+                    north_animation = {
                         layers = {
-                            { filename = "__IndustrialRevolution3Assets4__/graphics/entities/machines/drills/iron-drill-window-base-n.png", priority = "high", width = 128, height = 128, scale = 0.5, shift = { 0, -2 }, blend_mode = "additive-soft" },
+                            { filename = "__IndustrialRevolution3Assets4__/graphics/entities/machines/drills/iron-drill-window-base-e.png", priority = "high", width = 128, height = 128, scale = 0.5, shift = { 2, 0 },  blend_mode = "additive-soft" },
                             { filename = "__IndustrialRevolution3Assets4__/graphics/entities/machines/drills/iron-drill-window-base-s.png", priority = "high", width = 128, height = 128, scale = 0.5, shift = { 0, 2 },  blend_mode = "additive-soft" },
                             { filename = "__IndustrialRevolution3Assets4__/graphics/entities/machines/drills/iron-drill-window-base-w.png", priority = "high", width = 128, height = 128, scale = 0.5, shift = { -2, 0 }, blend_mode = "additive-soft" },
                         }
                     },
-                    north_animation = {
+                    east_animation = {
                         layers = {
-                            { filename = "__IndustrialRevolution3Assets4__/graphics/entities/machines/drills/iron-drill-window-base-e.png", priority = "high", width = 128, height = 128, scale = 0.5, shift = { 2, 0 },  blend_mode = "additive-soft" },
+                            { filename = "__IndustrialRevolution3Assets4__/graphics/entities/machines/drills/iron-drill-window-base-n.png", priority = "high", width = 128, height = 128, scale = 0.5, shift = { 0, -2 }, blend_mode = "additive-soft" },
                             { filename = "__IndustrialRevolution3Assets4__/graphics/entities/machines/drills/iron-drill-window-base-s.png", priority = "high", width = 128, height = 128, scale = 0.5, shift = { 0, 2 },  blend_mode = "additive-soft" },
                             { filename = "__IndustrialRevolution3Assets4__/graphics/entities/machines/drills/iron-drill-window-base-w.png", priority = "high", width = 128, height = 128, scale = 0.5, shift = { -2, 0 }, blend_mode = "additive-soft" },
                         }
@@ -509,16 +510,16 @@ data:extend({
                 {
                     always_draw = true,
                     apply_tint = "input-fluid-flow-color",
-                    east_animation = {
+                    north_animation = {
                         layers = {
-                            { filename = "__IndustrialRevolution3Assets4__/graphics/entities/machines/drills/iron-drill-window-flow-n.png", priority = "high", width = 128, height = 128, scale = 0.5, shift = { 0, -2 }, blend_mode = "additive" },
+                            { filename = "__IndustrialRevolution3Assets4__/graphics/entities/machines/drills/iron-drill-window-flow-e.png", priority = "high", width = 128, height = 128, scale = 0.5, shift = { 2, 0 },  blend_mode = "additive" },
                             { filename = "__IndustrialRevolution3Assets4__/graphics/entities/machines/drills/iron-drill-window-flow-s.png", priority = "high", width = 128, height = 128, scale = 0.5, shift = { 0, 2 },  blend_mode = "additive" },
                             { filename = "__IndustrialRevolution3Assets4__/graphics/entities/machines/drills/iron-drill-window-flow-w.png", priority = "high", width = 128, height = 128, scale = 0.5, shift = { -2, 0 }, blend_mode = "additive" },
                         }
                     },
-                    north_animation = {
+                    east_animation = {
                         layers = {
-                            { filename = "__IndustrialRevolution3Assets4__/graphics/entities/machines/drills/iron-drill-window-flow-e.png", priority = "high", width = 128, height = 128, scale = 0.5, shift = { 2, 0 },  blend_mode = "additive" },
+                            { filename = "__IndustrialRevolution3Assets4__/graphics/entities/machines/drills/iron-drill-window-flow-n.png", priority = "high", width = 128, height = 128, scale = 0.5, shift = { 0, -2 }, blend_mode = "additive" },
                             { filename = "__IndustrialRevolution3Assets4__/graphics/entities/machines/drills/iron-drill-window-flow-s.png", priority = "high", width = 128, height = 128, scale = 0.5, shift = { 0, 2 },  blend_mode = "additive" },
                             { filename = "__IndustrialRevolution3Assets4__/graphics/entities/machines/drills/iron-drill-window-flow-w.png", priority = "high", width = 128, height = 128, scale = 0.5, shift = { -2, 0 }, blend_mode = "additive" },
                         }

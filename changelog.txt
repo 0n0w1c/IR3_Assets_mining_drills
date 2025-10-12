@@ -1,4 +1,13 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.0.3
+Date: 12.10.2025
+  Bugfixes:
+    - Fixed electric mining drill pipecover shadow not correctly shifted
+  Changes:
+    - None
+  Features:
+    - None
+---------------------------------------------------------------------------------------------------
 Version: 0.0.2
 Date: 11.10.2025
   Bugfixes:
