@@ -61,8 +61,9 @@ local function scale_drill_graphics(gs)
     if out.west_animation then scale_animation(out.west_animation) end
 
     if out.working_visualisations then
-        for _, working_visualization in ipairs(out.working_visualisations) do scale_working_visualization(
-            working_visualization) end
+        for _, working_visualization in ipairs(out.working_visualisations) do
+            scale_working_visualization(working_visualization)
+        end
     end
     return out
 end

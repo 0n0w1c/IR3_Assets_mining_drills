@@ -1,4 +1,13 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.0.2
+Date: 11.10.2025
+  Bugfixes:
+    - None
+  Changes:
+    - None
+  Features:
+    - Added startup setting to select the size of the electric drill (default: 3x3)
+---------------------------------------------------------------------------------------------------
 Version: 0.0.1
 Date: 11.10.2025
   Bugfixes:

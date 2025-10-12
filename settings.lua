@@ -14,11 +14,19 @@ data:extend({
     },
     {
         type = "string-setting",
+        name = "IR3-electric-drill-footprint",
+        setting_type = "startup",
+        allowed_values = { "3x3", "5x5" },
+        default_value = "3x3",
+        order = "a",
+    },
+    {
+        type = "string-setting",
         name = "IR3-big-drill-footprint",
         setting_type = "startup",
         allowed_values = { "5x5", "7x7" },
         default_value = "5x5",
-        order = "b",
+        order = "c",
         hidden = hidden
     }
 })
