@@ -4,7 +4,7 @@ Date: 17.10.2025
   Bugfixes:
     - None
   Changes:
-    - Refactored, the circuit connector scaling
+    - Refactored the circuit connector scaling
   Features:
     - None
 ---------------------------------------------------------------------------------------------------
