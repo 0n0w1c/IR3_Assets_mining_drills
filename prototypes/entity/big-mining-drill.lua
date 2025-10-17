@@ -12,12 +12,8 @@ local function scale_drill_graphics(gs)
     return DC.scale_drill_graphics(gs, SPRITE_SCALE, SHIFT_FACTOR)
 end
 
-local connector                       = circuit_connector_definitions.create_vector(
-    universal_connector_template,
-    VECTORS
-)
-
-local half_extent                     = is7 and 3.5 or 2.5
+local extent                          = is7 and 7 or 5
+local half_extent                     = extent / 2
 local connection_shift                = half_extent - 0.5
 local selection_box                   = { { -half_extent, -half_extent }, { half_extent, half_extent } }
 local collision_box                   = { { -(half_extent - 0.1), -(half_extent - 0.1) }, { (half_extent - 0.1), (half_extent - 0.1) } }
@@ -32,7 +28,8 @@ entity.selection_box                  = selection_box
 entity.drawing_box_vertical_extension = 1
 entity.integration_patch              = nil
 
-entity.circuit_connector              = DC.scaled_circuit_connector(connector, not is7, -1)
+entity.circuit_connector              = circuit_connector_definitions.create_vector(universal_connector_template,
+    DC.connector_vectors_for(extent))
 
 entity.input_fluid_box                = {
     volume = 200,

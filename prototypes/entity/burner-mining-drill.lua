@@ -12,12 +12,8 @@ local function scale_drill_graphics(gs)
     return DC.scale_drill_graphics(gs, SPRITE_SCALE, SHIFT_FACTOR)
 end
 
-local connector                 = circuit_connector_definitions.create_vector(
-    universal_connector_template,
-    VECTORS
-)
-
-local half_extent               = is5 and 2.5 or 1.0
+local extent                    = is5 and 5 or 2
+local half_extent               = extent / 2
 local selection_box             = { { -half_extent, -half_extent }, { half_extent, half_extent } }
 local collision_box             = { { -(half_extent - 0.1), -(half_extent - 0.1) }, { (half_extent - 0.1), (half_extent - 0.1) } }
 
@@ -37,7 +33,8 @@ entity.selection_box                  = selection_box
 entity.drawing_box_vertical_extension = 1
 entity.integration_patch              = nil
 
-entity.circuit_connector              = DC.scaled_circuit_connector(connector, is5, 1.5)
+entity.circuit_connector              = circuit_connector_definitions.create_vector(universal_connector_template,
+    DC.connector_vectors_for(extent))
 
 entity.energy_source.light_flicker    = {
     color = { r = 0, g = 0, b = 0, a = 0 }

@@ -48,89 +48,93 @@ PIPE_COVERS = {
 
 local M = {}
 
-local function _scale_sheet(sheet, s, k)
+local CIRCUIT_CONNECTOR_OFFSETS = {
+    { variation = 4, main = { -10, -162 }, shadow = { 0, -152 } },
+    { variation = 2, main = { 154, -5 },   shadow = { 164, 5 } },
+    { variation = 0, main = { 10, 142 },   shadow = { 20, 152 } },
+    { variation = 6, main = { -154, 5 },   shadow = { -144, 15 } },
+}
+
+function M.connector_vectors_for(footprint_dim)
+    local offset_delta_px = ((5 - footprint_dim) / 2) * 64
+
+    local function apply_direction_delta(dir_index, base_x, base_y)
+        if dir_index == 1 then
+            return base_x, base_y + offset_delta_px
+        elseif dir_index == 2 then
+            return base_x - offset_delta_px, base_y
+        elseif dir_index == 3 then
+            return base_x, base_y - offset_delta_px
+        else
+            return base_x + offset_delta_px, base_y
+        end
+    end
+
+    local vectors = {}
+    for dir_index, base in ipairs(CIRCUIT_CONNECTOR_OFFSETS) do
+        local main_x, main_y     = apply_direction_delta(dir_index, base.main[1], base.main[2])
+        local shadow_x, shadow_y = apply_direction_delta(dir_index, base.shadow[1], base.shadow[2])
+        vectors[dir_index]       = {
+            variation     = base.variation,
+            main_offset   = util.by_pixel_hr(main_x, main_y),
+            shadow_offset = util.by_pixel_hr(shadow_x, shadow_y),
+            show_shadow   = true,
+        }
+    end
+    return vectors
+end
+
+local function _scale_sheet(sheet, target_scale, shift_factor)
     if not sheet then return end
-    if sheet.scale then sheet.scale = s end
+    if sheet.scale then sheet.scale = target_scale end
     if sheet.shift and type(sheet.shift) == "table" then
-        sheet.shift = { sheet.shift[1] * k, sheet.shift[2] * k }
+        sheet.shift = { sheet.shift[1] * shift_factor, sheet.shift[2] * shift_factor }
     end
 end
 
-function M.scale_animation(anim, s, k)
-    if not anim then return end
-    if anim.layers then
-        for _, layer in ipairs(anim.layers) do _scale_sheet(layer, s, k) end
+function M.scale_animation(animation, target_scale, shift_factor)
+    if not animation then return end
+
+    if animation.layers then
+        for _, layer in ipairs(animation.layers) do
+            _scale_sheet(layer, target_scale, shift_factor)
+        end
     else
-        _scale_sheet(anim, s, k)
+        _scale_sheet(animation, target_scale, shift_factor)
     end
 end
 
-function M.scale_working_visualisation(wv, s, k)
-    if not wv then return end
-    M.scale_animation(wv.animation, s, k)
-    M.scale_animation(wv.north_animation, s, k)
-    M.scale_animation(wv.east_animation, s, k)
-    M.scale_animation(wv.south_animation, s, k)
-    M.scale_animation(wv.west_animation, s, k)
-    if wv.light and wv.light.shift then
-        local sh = wv.light.shift
-        wv.light.shift = { sh[1] * k, sh[2] * k }
+function M.scale_working_visualisation(vis, target_scale, shift_factor)
+    if not vis then return end
+
+    M.scale_animation(vis.animation, target_scale, shift_factor)
+    M.scale_animation(vis.north_animation, target_scale, shift_factor)
+    M.scale_animation(vis.east_animation, target_scale, shift_factor)
+    M.scale_animation(vis.south_animation, target_scale, shift_factor)
+    M.scale_animation(vis.west_animation, target_scale, shift_factor)
+
+    if vis.light and vis.light.shift then
+        local light_shift = vis.light.shift
+        vis.light.shift = { light_shift[1] * shift_factor, light_shift[2] * shift_factor }
     end
 end
 
-function M.scale_drill_graphics(gs, s, k)
-    local out = table.deepcopy(gs)
-    if out.animation then M.scale_animation(out.animation, s, k) end
-    if out.north_animation then M.scale_animation(out.north_animation, s, k) end
-    if out.east_animation then M.scale_animation(out.east_animation, s, k) end
-    if out.south_animation then M.scale_animation(out.south_animation, s, k) end
-    if out.west_animation then M.scale_animation(out.west_animation, s, k) end
-    if out.working_visualisations then
-        for _, wv in ipairs(out.working_visualisations) do
-            M.scale_working_visualisation(wv, s, k)
+function M.scale_drill_graphics(graphics_set, target_scale, shift_factor)
+    local scaled = table.deepcopy(graphics_set)
+
+    if scaled.animation then M.scale_animation(scaled.animation, target_scale, shift_factor) end
+    if scaled.north_animation then M.scale_animation(scaled.north_animation, target_scale, shift_factor) end
+    if scaled.east_animation then M.scale_animation(scaled.east_animation, target_scale, shift_factor) end
+    if scaled.south_animation then M.scale_animation(scaled.south_animation, target_scale, shift_factor) end
+    if scaled.west_animation then M.scale_animation(scaled.west_animation, target_scale, shift_factor) end
+
+    if scaled.working_visualisations then
+        for _, vis in ipairs(scaled.working_visualisations) do
+            M.scale_working_visualisation(vis, target_scale, shift_factor)
         end
     end
-    return out
-end
 
-local function shift_pair(p, dx, dy)
-    if p then
-        p[1] = p[1] + dx; p[2] = p[2] + dy
-    end
-end
-
-local function shift_connector_entry(entry, dx, dy)
-    if not entry then return end
-
-    if entry.sprites then
-        for _, key in ipairs({ "connector_main", "connector_shadow", "wire_pins", "wire_pins_shadow", "led_blue", "led_blue_off", "led_green", "led_red" }) do
-            local spr = entry.sprites[key]
-            if spr and spr.shift then shift_pair(spr.shift, dx, dy) end
-        end
-        shift_pair(entry.sprites.blue_led_light_offset, dx, dy)
-        shift_pair(entry.sprites.red_green_led_light_offset, dx, dy)
-    end
-    if entry.points then
-        if entry.points.wire then
-            shift_pair(entry.points.wire.red, dx, dy); shift_pair(entry.points.wire.green, dx, dy)
-        end
-        if entry.points.shadow then
-            shift_pair(entry.points.shadow.red, dx, dy); shift_pair(entry.points.shadow.green, dx, dy)
-        end
-    end
-end
-
-function M.scaled_circuit_connector(base_circuit_connector, is_full, delta)
-    if is_full then return base_circuit_connector end
-
-    local cc = table.deepcopy(base_circuit_connector)
-
-    shift_connector_entry(cc[1], 0, delta)
-    shift_connector_entry(cc[2], -delta, 0)
-    shift_connector_entry(cc[3], 0, -delta)
-    shift_connector_entry(cc[4], delta, 0)
-
-    return cc
+    return scaled
 end
 
 return M
