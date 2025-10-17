@@ -12,7 +12,7 @@ STATUS_COLORS = {
     insufficient_input   = { r = 1, g = 0.625, b = 0.25, a = 1 },
     low_power            = { r = 1, g = 0.25, b = 0.25, a = 1 },
     no_minable_resources = { r = 0.25, g = 0.625, b = 1, a = 1 },
-    no_power             = { 0, 0, 0, 0 },
+    no_power             = { r = 0, g = 0, b = 0, a = 0 },
     working              = { r = 0.25, g = 1, b = 0.25, a = 1 },
 }
 
@@ -93,7 +93,6 @@ function M.scale_drill_graphics(gs, s, k)
     return out
 end
 
--- circuit connector shifting
 local function shift_pair(p, dx, dy)
     if p then
         p[1] = p[1] + dx; p[2] = p[2] + dy
@@ -102,6 +101,7 @@ end
 
 local function shift_connector_entry(entry, dx, dy)
     if not entry then return end
+
     if entry.sprites then
         for _, key in ipairs({ "connector_main", "connector_shadow", "wire_pins", "wire_pins_shadow", "led_blue", "led_blue_off", "led_green", "led_red" }) do
             local spr = entry.sprites[key]
@@ -122,12 +122,14 @@ end
 
 function M.scaled_circuit_connector(base_circuit_connector, is_full, delta)
     if is_full then return base_circuit_connector end
+
     local cc = table.deepcopy(base_circuit_connector)
-    -- order: 1=north, 2=east, 3=south, 4=west
+
     shift_connector_entry(cc[1], 0, delta)
     shift_connector_entry(cc[2], -delta, 0)
     shift_connector_entry(cc[3], 0, -delta)
     shift_connector_entry(cc[4], delta, 0)
+
     return cc
 end
 
