@@ -18,7 +18,7 @@ local selection_box             = { { -half_extent, -half_extent }, { half_exten
 local collision_box             = { { -(half_extent - 0.1), -(half_extent - 0.1) }, { (half_extent - 0.1), (half_extent - 0.1) } }
 
 local vector_to_place           = { -0.5, -(half_extent + 0.35) }
-local resource_searching_radius = is5 and 2.49 or 1
+local resource_searching_radius = is5 and 2.49 or 0.99
 local smoke_shift               = is5 and -1.65 or -0.8
 
 if is5 then
