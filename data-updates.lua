@@ -11,8 +11,10 @@ require("prototypes/item/burner-mining-drill")
 
 require("prototypes/entity/electric-mining-drill")
 require("prototypes/item/electric-mining-drill")
+require("prototypes/technology/electric-mining-drill")
 
 if mods["space-age"] then
     require("prototypes/entity/big-mining-drill")
     require("prototypes/item/big-mining-drill")
+    require("prototypes/technology/big-mining-drill")
 end
