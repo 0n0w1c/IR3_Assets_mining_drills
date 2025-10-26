@@ -336,3 +336,26 @@ entity.graphics_set                   = scale_drill_graphics({
 
 entity.resource_searching_radius      = resource_searching_radius
 entity.vector_to_place_result         = vector_to_place
+
+entity.working_sound                  = {
+    sound = {
+        {
+            filename = "__base__/sound/burner-mining-drill-1.ogg",
+            volume = 0.6,
+            modifiers = {
+                type = "tips-and-tricks",
+                volume_multiplier = 0.8,
+            },
+        },
+        {
+            filename = "__base__/sound/burner-mining-drill-2.ogg",
+            volume = 0.6,
+            modifiers = {
+                type = "tips-and-tricks",
+                volume_multiplier = 0.8,
+            },
+        },
+    },
+    fade_in_ticks = 10,
+    fade_out_ticks = 30,
+}
