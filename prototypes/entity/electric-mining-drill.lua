@@ -23,13 +23,82 @@ local entity                          = data.raw["mining-drill"]["electric-minin
 
 entity.icon                           = "__IndustrialRevolution3Assets1__/graphics/icons/64/electric-mining-drill.png"
 
+entity.corpse                         = "medium-remnants"
+entity.dying_explosion                = "electric-mining-drill-explosion"
+
+entity.damaged_trigger_effect         = {
+    {
+        damage_type_filters = {
+            "fire",
+            "impact"
+        },
+        frame_speed = 1,
+        frame_speed_deviation = 0.1,
+        initial_height = 0.5,
+        initial_vertical_speed = 0.07,
+        initial_vertical_speed_deviation = 0.1,
+        offset_deviation = {
+            { -0.5, -0.5 },
+            { 0.5,  0.5 }
+        },
+        particle_name = "copper-particle",
+        probability = 0.062911153119092624,
+        repeat_count = 1,
+        speed_from_center = 0.02,
+        speed_from_center_deviation = 0.01,
+        type = "create-particle"
+    },
+    {
+        damage_type_filters = {
+            "fire",
+            "impact"
+        },
+        frame_speed = 1,
+        frame_speed_deviation = 0.1,
+        initial_height = 0.5,
+        initial_vertical_speed = 0.07,
+        initial_vertical_speed_deviation = 0.1,
+        offset_deviation = {
+            { -0.5, -0.5 },
+            { 0.5,  0.5 }
+        },
+        particle_name = "glass-particle",
+        probability = 0.031455576559546312,
+        repeat_count = 1,
+        speed_from_center = 0.02,
+        speed_from_center_deviation = 0.01,
+        type = "create-particle"
+    },
+    {
+        damage_type_filters = {
+            "fire",
+            "impact"
+        },
+        frame_speed = 1,
+        frame_speed_deviation = 0.1,
+        initial_height = 0.5,
+        initial_vertical_speed = 0.07,
+        initial_vertical_speed_deviation = 0.1,
+        offset_deviation = {
+            { -0.5, -0.5 },
+            { 0.5,  0.5 }
+        },
+        particle_name = "iron-particle",
+        probability = 0.4621550094517958,
+        repeat_count = 1,
+        speed_from_center = 0.02,
+        speed_from_center_deviation = 0.01,
+        type = "create-particle"
+    }
+}
+
 entity.collision_box                  = collision_box
 entity.selection_box                  = selection_box
 entity.drawing_box_vertical_extension = 1
 entity.integration_patch              = nil
 
-entity.circuit_connector              = circuit_connector_definitions.create_vector(universal_connector_template,
-    DC.connector_vectors_for(extent))
+entity.circuit_connector              =
+    circuit_connector_definitions.create_vector(universal_connector_template, DC.connector_vectors_for(extent))
 
 entity.input_fluid_box                = {
     volume = 200,

@@ -20,9 +20,11 @@ local collision_box             = { { -(half_extent - 0.1), -(half_extent - 0.1)
 local vector_to_place           = { -0.5, -(half_extent + 0.35) }
 local resource_searching_radius = is5 and 2.49 or 0.99
 local smoke_shift               = is5 and -1.65 or -0.8
+local corpse                    = "small-remnants"
 
 if is5 then
     vector_to_place = { 0, -(half_extent + 0.35) }
+    corpse = "medium-remnants"
 end
 
 local entity                          = data.raw["mining-drill"]["burner-mining-drill"]
@@ -33,8 +35,77 @@ entity.selection_box                  = selection_box
 entity.drawing_box_vertical_extension = 1
 entity.integration_patch              = nil
 
-entity.circuit_connector              = circuit_connector_definitions.create_vector(universal_connector_template,
-    DC.connector_vectors_for(extent))
+entity.corpse                         = corpse
+entity.dying_explosion                = "burner-mining-drill-explosion"
+
+entity.damaged_trigger_effect         = {
+    {
+        damage_type_filters = {
+            "fire",
+            "impact"
+        },
+        frame_speed = 1,
+        frame_speed_deviation = 0.1,
+        initial_height = 0.5,
+        initial_vertical_speed = 0.07,
+        initial_vertical_speed_deviation = 0.1,
+        offset_deviation = {
+            { -0.5, -0.5 },
+            { 0.5,  0.5 }
+        },
+        particle_name = "copper-particle",
+        probability = 0.71764705882352944,
+        repeat_count = 1,
+        speed_from_center = 0.02,
+        speed_from_center_deviation = 0.01,
+        type = "create-particle"
+    },
+    {
+        damage_type_filters = {
+            "fire",
+            "impact"
+        },
+        frame_speed = 1,
+        frame_speed_deviation = 0.1,
+        initial_height = 0.5,
+        initial_vertical_speed = 0.07,
+        initial_vertical_speed_deviation = 0.1,
+        offset_deviation = {
+            { -0.5, -0.5 },
+            { 0.5,  0.5 }
+        },
+        particle_name = "iron-particle",
+        probability = 0.18823529411764707,
+        repeat_count = 1,
+        speed_from_center = 0.02,
+        speed_from_center_deviation = 0.01,
+        type = "create-particle"
+    },
+    {
+        damage_type_filters = {
+            "fire",
+            "impact"
+        },
+        frame_speed = 1,
+        frame_speed_deviation = 0.1,
+        initial_height = 0.5,
+        initial_vertical_speed = 0.07,
+        initial_vertical_speed_deviation = 0.1,
+        offset_deviation = {
+            { -0.5, -0.5 },
+            { 0.5,  0.5 }
+        },
+        particle_name = "wood-particle",
+        probability = 0.094117647058823533,
+        repeat_count = 1,
+        speed_from_center = 0.02,
+        speed_from_center_deviation = 0.01,
+        type = "create-particle"
+    }
+}
+
+entity.circuit_connector              =
+    circuit_connector_definitions.create_vector(universal_connector_template, DC.connector_vectors_for(extent))
 
 entity.energy_source.light_flicker    = {
     color = { r = 0, g = 0, b = 0, a = 0 }
