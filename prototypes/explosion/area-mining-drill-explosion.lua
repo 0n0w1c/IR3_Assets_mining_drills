@@ -1,7 +1,7 @@
 data:extend({
     {
         type = "explosion",
-        name = "big-mining-drill-explosion",
+        name = "area-mining-drill-explosion",
         animations = {
             animation_speed = 0.5,
             axially_symmetrical = false,

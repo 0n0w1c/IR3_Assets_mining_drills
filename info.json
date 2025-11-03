@@ -1,13 +1,14 @@
 {
     "name": "IR3_Assets_mining_drills",
-    "version": "0.1.5",
+    "version": "0.2.0",
     "title": "IR3 Assets: mining drills",
     "author": "0n0w1c",
     "description": "Reskins the mining drills using IR3 graphical assets, if installed.\nRequires the manual installation of the Industrial Revolution 3 Asset Packs.",
     "factorio_version": "2.0",
     "dependencies": [
-        "base",
-        "IR3_Assets_some_assembly_required",
-        "? space-age"
+        "base >= 2.0",
+        "IR3_Assets_some_assembly_required >= 0.1.2",
+        "? space-age",
+        "? aai-industry"
     ]
 }
