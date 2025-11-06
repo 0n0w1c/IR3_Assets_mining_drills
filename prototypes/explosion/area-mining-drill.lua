@@ -1,7 +1,8 @@
 data:extend({
     {
         type = "explosion",
-        name = "electric-mining-drill-explosion",
+        name = "area-mining-drill-explosion",
+        hidden_in_factoriopedia = true,
         animations = {
             animation_speed = 0.5,
             axially_symmetrical = false,
@@ -39,12 +40,12 @@ data:extend({
                         initial_vertical_speed = 0.07,
                         initial_vertical_speed_deviation = 0.1,
                         offset_deviation = {
-                            { -0.5, -0.5 },
-                            { 0.5,  0.5 }
+                            { -0.74, -0.74 },
+                            { 0.74,  0.74 }
                         },
                         particle_name = "trailing-copper-particle",
                         probability = 1,
-                        repeat_count = 15,
+                        repeat_count = 10,
                         speed_from_center = 0.1,
                         speed_from_center_deviation = 0.05,
                         type = "create-particle"
@@ -60,12 +61,12 @@ data:extend({
                         initial_vertical_speed = 0.07,
                         initial_vertical_speed_deviation = 0.1,
                         offset_deviation = {
-                            { -0.5, -0.5 },
-                            { 0.5,  0.5 }
+                            { -0.74, -0.74 },
+                            { 0.74,  0.74 }
                         },
                         particle_name = "trailing-glass-particle",
                         probability = 1,
-                        repeat_count = 8,
+                        repeat_count = 2,
                         speed_from_center = 0.1,
                         speed_from_center_deviation = 0.05,
                         type = "create-particle"
@@ -81,12 +82,54 @@ data:extend({
                         initial_vertical_speed = 0.07,
                         initial_vertical_speed_deviation = 0.1,
                         offset_deviation = {
-                            { -0.5, -0.5 },
-                            { 0.5,  0.5 }
+                            { -0.74, -0.74 },
+                            { 0.74,  0.74 }
+                        },
+                        particle_name = "trailing-gold-particle",
+                        probability = 1,
+                        repeat_count = 5,
+                        speed_from_center = 0.1,
+                        speed_from_center_deviation = 0.05,
+                        type = "create-particle"
+                    },
+                    {
+                        damage_type_filters = {
+                            "fire",
+                            "impact"
+                        },
+                        frame_speed = 1,
+                        frame_speed_deviation = 0.1,
+                        initial_height = 0.5,
+                        initial_vertical_speed = 0.07,
+                        initial_vertical_speed_deviation = 0.1,
+                        offset_deviation = {
+                            { -0.74, -0.74 },
+                            { 0.74,  0.74 }
+                        },
+                        particle_name = "trailing-steel-particle",
+                        probability = 1,
+                        repeat_count = 109,
+                        speed_from_center = 0.1,
+                        speed_from_center_deviation = 0.05,
+                        type = "create-particle"
+                    },
+                    {
+                        damage_type_filters = {
+                            "fire",
+                            "impact"
+                        },
+                        frame_speed = 1,
+                        frame_speed_deviation = 0.1,
+                        initial_height = 0.5,
+                        initial_vertical_speed = 0.07,
+                        initial_vertical_speed_deviation = 0.1,
+                        offset_deviation = {
+                            { -0.74, -0.74 },
+                            { 0.74,  0.74 }
                         },
                         particle_name = "trailing-iron-particle",
                         probability = 1,
-                        repeat_count = 107,
+                        repeat_count = 6,
                         speed_from_center = 0.1,
                         speed_from_center_deviation = 0.05,
                         type = "create-particle"
@@ -97,15 +140,10 @@ data:extend({
             type = "direct"
         },
         flags = { "not-on-map" },
-        icon = "__IndustrialRevolution3Assets1__/graphics/icons/64/electric-mining-drill.png",
+        icon = "__IndustrialRevolution3Assets1__/graphics/icons/64/chrome-drill.png",
         icon_mipmaps = 4,
         icon_size = 64,
-        localised_name = {
-            "entity-name.ir-explosion",
-            {
-                "entity-name.electric-mining-drill"
-            }
-        },
+        localised_name = { "entity-name.chrome-drill" },
         sound = {
             aggregation = {
                 max_count = 1,

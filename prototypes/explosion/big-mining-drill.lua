@@ -2,6 +2,7 @@ data:extend({
     {
         type = "explosion",
         name = "big-mining-drill-explosion",
+        hidden_in_factoriopedia = true,
         animations = {
             animation_speed = 0.5,
             axially_symmetrical = false,
@@ -142,12 +143,7 @@ data:extend({
         icon = "__IndustrialRevolution3Assets1__/graphics/icons/64/chrome-drill.png",
         icon_mipmaps = 4,
         icon_size = 64,
-        localised_name = {
-            "entity-name.ir-explosion",
-            {
-                "entity-name.chrome-drill"
-            }
-        },
+        localised_name = { "entity-name.chrome-drill" },
         sound = {
             aggregation = {
                 max_count = 1,

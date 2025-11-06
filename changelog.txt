@@ -1,4 +1,12 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.3.0
+Date: 06.11.2025
+  Bugfixes:
+    - Mining drill explosions are now hidden in factoriopedia
+  Changes:
+    - Added IR3_Assets:resources as an optional dependency
+    - Adds a steel derrick for the natural gas fissures provided by IR3 Assets:resources
+---------------------------------------------------------------------------------------------------
 Version: 0.2.0
 Date: 29.10.2025
   Bugfixes:

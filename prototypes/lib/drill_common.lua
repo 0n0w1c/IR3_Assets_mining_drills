@@ -1,10 +1,3 @@
-VECTORS = {
-    { variation = 4, main_offset = util.by_pixel_hr(-10, -162), shadow_offset = util.by_pixel_hr(0, -152),  show_shadow = true },
-    { variation = 2, main_offset = util.by_pixel_hr(154, -5),   shadow_offset = util.by_pixel_hr(164, 5),   show_shadow = true },
-    { variation = 0, main_offset = util.by_pixel_hr(10, 142),   shadow_offset = util.by_pixel_hr(20, 152),  show_shadow = true },
-    { variation = 6, main_offset = util.by_pixel_hr(-154, 5),   shadow_offset = util.by_pixel_hr(-144, 15), show_shadow = true },
-}
-
 STATUS_COLORS = {
     disabled             = { r = 1, g = 0.25, b = 0.25, a = 1 },
     full_output          = { r = 1, g = 0.625, b = 0.25, a = 1 },
@@ -46,7 +39,7 @@ PIPE_COVERS = {
     }
 }
 
-local M = {}
+local LIB = {}
 
 local CIRCUIT_CONNECTOR_OFFSETS = {
     { variation = 4, main = { -10, -162 }, shadow = { 0, -152 } },
@@ -55,7 +48,7 @@ local CIRCUIT_CONNECTOR_OFFSETS = {
     { variation = 6, main = { -154, 5 },   shadow = { -144, 15 } },
 }
 
-function M.connector_vectors_for(footprint_dim)
+function LIB.connector_vectors_for(footprint_dim)
     local offset_delta_px = ((5 - footprint_dim) / 2) * 64
 
     local function apply_direction_delta(dir_index, base_x, base_y)
@@ -92,7 +85,7 @@ local function _scale_sheet(sheet, target_scale, shift_factor)
     end
 end
 
-function M.scale_animation(animation, target_scale, shift_factor)
+function LIB.scale_animation(animation, target_scale, shift_factor)
     if not animation then return end
 
     if animation.layers then
@@ -104,14 +97,14 @@ function M.scale_animation(animation, target_scale, shift_factor)
     end
 end
 
-function M.scale_working_visualisation(vis, target_scale, shift_factor)
+function LIB.scale_working_visualisation(vis, target_scale, shift_factor)
     if not vis then return end
 
-    M.scale_animation(vis.animation, target_scale, shift_factor)
-    M.scale_animation(vis.north_animation, target_scale, shift_factor)
-    M.scale_animation(vis.east_animation, target_scale, shift_factor)
-    M.scale_animation(vis.south_animation, target_scale, shift_factor)
-    M.scale_animation(vis.west_animation, target_scale, shift_factor)
+    LIB.scale_animation(vis.animation, target_scale, shift_factor)
+    LIB.scale_animation(vis.north_animation, target_scale, shift_factor)
+    LIB.scale_animation(vis.east_animation, target_scale, shift_factor)
+    LIB.scale_animation(vis.south_animation, target_scale, shift_factor)
+    LIB.scale_animation(vis.west_animation, target_scale, shift_factor)
 
     if vis.light and vis.light.shift then
         local light_shift = vis.light.shift
@@ -119,22 +112,22 @@ function M.scale_working_visualisation(vis, target_scale, shift_factor)
     end
 end
 
-function M.scale_drill_graphics(graphics_set, target_scale, shift_factor)
+function LIB.scale_drill_graphics(graphics_set, target_scale, shift_factor)
     local scaled = table.deepcopy(graphics_set)
 
-    if scaled.animation then M.scale_animation(scaled.animation, target_scale, shift_factor) end
-    if scaled.north_animation then M.scale_animation(scaled.north_animation, target_scale, shift_factor) end
-    if scaled.east_animation then M.scale_animation(scaled.east_animation, target_scale, shift_factor) end
-    if scaled.south_animation then M.scale_animation(scaled.south_animation, target_scale, shift_factor) end
-    if scaled.west_animation then M.scale_animation(scaled.west_animation, target_scale, shift_factor) end
+    if scaled.animation then LIB.scale_animation(scaled.animation, target_scale, shift_factor) end
+    if scaled.north_animation then LIB.scale_animation(scaled.north_animation, target_scale, shift_factor) end
+    if scaled.east_animation then LIB.scale_animation(scaled.east_animation, target_scale, shift_factor) end
+    if scaled.south_animation then LIB.scale_animation(scaled.south_animation, target_scale, shift_factor) end
+    if scaled.west_animation then LIB.scale_animation(scaled.west_animation, target_scale, shift_factor) end
 
     if scaled.working_visualisations then
         for _, vis in ipairs(scaled.working_visualisations) do
-            M.scale_working_visualisation(vis, target_scale, shift_factor)
+            LIB.scale_working_visualisation(vis, target_scale, shift_factor)
         end
     end
 
     return scaled
 end
 
-return M
+return LIB
