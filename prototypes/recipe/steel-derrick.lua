@@ -13,10 +13,3 @@ data:extend({
         enabled = false,
     }
 })
-
-recipe = data.raw["recipe"]["steel-derrick"]
-local recycling = {}
-if mods["quality"] then
-    recycling = require("__quality__/prototypes/recycling")
-    recycling.generate_recycling_recipe(recipe)
-end

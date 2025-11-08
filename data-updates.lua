@@ -10,10 +10,22 @@ require("prototypes/explosion/burner-mining-drill")
 require("prototypes/entity/burner-mining-drill")
 require("prototypes/item/burner-mining-drill")
 
+recipe = data.raw["recipe"]["burner-mining-drill"]
+if mods["quality"] then
+    local recycling = require("__quality__/prototypes/recycling")
+    recycling.generate_recycling_recipe(recipe)
+end
+
 require("prototypes/explosion/electric-mining-drill")
 require("prototypes/entity/electric-mining-drill")
 require("prototypes/item/electric-mining-drill")
 require("prototypes/technology/electric-mining-drill")
+
+recipe = data.raw["recipe"]["electric-mining-drill"]
+if mods["quality"] then
+    local recycling = require("__quality__/prototypes/recycling")
+    recycling.generate_recycling_recipe(recipe)
+end
 
 if mods["IR3_Assets_resources"] and data.raw["resource"]["natural-gas-fissure"] then
     require("prototypes/explosion/steel-derrick")
@@ -21,6 +33,12 @@ if mods["IR3_Assets_resources"] and data.raw["resource"]["natural-gas-fissure"] 
     require("prototypes/item/steel-derrick")
     require("prototypes/recipe/steel-derrick")
     require("prototypes/technology/oil-gathering")
+
+    recipe = data.raw["recipe"]["steel-derrick"]
+    if mods["quality"] then
+        local recycling = require("__quality__/prototypes/recycling")
+        recycling.generate_recycling_recipe(recipe)
+    end
 end
 
 if mods["space-age"] then
@@ -28,11 +46,23 @@ if mods["space-age"] then
     require("prototypes/entity/big-mining-drill")
     require("prototypes/item/big-mining-drill")
     require("prototypes/technology/big-mining-drill")
+
+    recipe = data.raw["recipe"]["big-mining-drill"]
+    if mods["quality"] then
+        local recycling = require("__quality__/prototypes/recycling")
+        recycling.generate_recycling_recipe(recipe)
+    end
 else
     if mods["aai-industry"] and data.raw["mining-drill"]["area-mining-drill"] then
         require("prototypes/explosion/area-mining-drill")
         require("prototypes/entity/area-mining-drill")
         require("prototypes/item/area-mining-drill")
         require("prototypes/technology/area-mining-drill")
+
+        recipe = data.raw["recipe"]["area-mining-drill"]
+        if mods["quality"] then
+            local recycling = require("__quality__/prototypes/recycling")
+            recycling.generate_recycling_recipe(recipe)
+        end
     end
 end
