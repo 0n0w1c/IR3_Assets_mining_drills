@@ -28,5 +28,12 @@ data:extend({
         default_value = "5x5",
         order = "c",
         hidden = hidden
+    },
+    {
+        type = "bool-setting",
+        name = "IR3-steel-derrick",
+        setting_type = "startup",
+        default_value = false,
+        order = "d",
     }
 })

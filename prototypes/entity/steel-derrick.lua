@@ -1,3 +1,5 @@
+require("__IR3_Assets_mining_drills__/prototypes/lib/drill_common")
+
 local entity                  = table.deepcopy(data.raw["mining-drill"]["pumpjack"])
 
 entity.name                   = "steel-derrick"
@@ -5,6 +7,7 @@ entity.icon                   = "__IndustrialRevolution3Assets1__/graphics/icons
 entity.resource_categories    = { "gas" }
 entity.minable                = { mining_time = 0.5, result = "steel-derrick" }
 entity.base_picture           = nil
+entity.fast_replaceable_group = "derricks"
 entity.corpse                 = "medium-remnants"
 entity.dying_explosion        = "steel-derrick-explosion"
 entity.vector_to_place_result = { 0, 0 }

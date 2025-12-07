@@ -27,20 +27,6 @@ if mods["quality"] then
     recycling.generate_recycling_recipe(recipe)
 end
 
-if mods["IR3_Assets_resources"] and data.raw["resource"]["natural-gas-fissure"] then
-    require("prototypes/explosion/steel-derrick")
-    require("prototypes/entity/steel-derrick")
-    require("prototypes/item/steel-derrick")
-    require("prototypes/recipe/steel-derrick")
-    require("prototypes/technology/oil-gathering")
-
-    recipe = data.raw["recipe"]["steel-derrick"]
-    if mods["quality"] then
-        local recycling = require("__quality__/prototypes/recycling")
-        recycling.generate_recycling_recipe(recipe)
-    end
-end
-
 if mods["space-age"] then
     require("prototypes/explosion/big-mining-drill")
     require("prototypes/entity/big-mining-drill")

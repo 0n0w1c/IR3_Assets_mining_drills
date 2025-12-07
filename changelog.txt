@@ -1,4 +1,12 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.4.0
+Date: 07.12.2025
+  Bugfixes:
+    - None
+  Changes:
+    - Added a startup setting to enable the Steel derrick (default:disabled)
+    - Removed the optional dependency for IR3 Assets: resources
+---------------------------------------------------------------------------------------------------
 Version: 0.3.1
 Date: 08.11.2025
   Bugfixes:
