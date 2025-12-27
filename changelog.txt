@@ -1,4 +1,11 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.4.2
+Date: 27.12.2025
+  Bugfixes:
+    - Changed the localized string startup setting 'Enable steel derrick' to 'Enable gas derrick'
+  Changes:
+    - None
+---------------------------------------------------------------------------------------------------
 Version: 0.4.1
 Date: 08.12.2025
   Bugfixes:

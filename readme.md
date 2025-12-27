@@ -18,7 +18,7 @@ See the mod [IR3 Assets: Some assembly required](https://mods.factorio.com/mod/I
 * Big mining drill (default: 5x5) 
 
 #### Startup setting to enable:
-* Steel derrick (default: disabled)
+* Gas derrick (default: disabled)
 
 Note: Startup menu simulations will be disturbed by changing mining drill size.
 
