@@ -1326,5 +1326,5 @@ entity.vector_to_place_result         = vector_to_place
 entity.working_sound                  = {
     fade_in_ticks = 10,
     fade_out_ticks = 30,
-    sound = { filename = "__IndustrialRevolution3Assets1__/sound/heavy-drill.ogg", volume = 0.8 }
+    sound = { filename = "__IndustrialRevolution3Assets1__/sound/heavy-drill.ogg", volume = 0.2 }
 }
