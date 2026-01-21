@@ -407,7 +407,7 @@ entity.graphics_set           = {
 }
 
 entity.output_fluid_box       = {
-    volume = 1000,
+    volume = 200,
     production_type = "output",
     pipe_connections = {
         {
