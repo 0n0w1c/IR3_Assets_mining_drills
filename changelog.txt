@@ -1,4 +1,11 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.4.5
+Date: 04.04.2026
+  Bugfixes:
+    - Steel derrick requires IR3 Assets resources and resource-category "gas" is defined 
+  Changes:
+    - None
+---------------------------------------------------------------------------------------------------
 Version: 0.4.4
 Date: 20.01.2026
   Bugfixes:

@@ -7,9 +7,11 @@ if not (mods["IndustrialRevolution3Assets1"]
 end
 
 if settings.startup["IR3-steel-derrick"].value then
-    require("prototypes/explosion/steel-derrick")
-    require("prototypes/entity/steel-derrick")
-    require("prototypes/item/steel-derrick")
-    require("prototypes/recipe/steel-derrick")
-    require("prototypes/technology/oil-gathering")
+    if mods["IR3_Assets_resources"] and data.raw["resource-category"]["gas"] then
+        require("prototypes/explosion/steel-derrick")
+        require("prototypes/entity/steel-derrick")
+        require("prototypes/item/steel-derrick")
+        require("prototypes/recipe/steel-derrick")
+        require("prototypes/technology/oil-gathering")
+    end
 end
