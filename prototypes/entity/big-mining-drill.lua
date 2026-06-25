@@ -1,4 +1,4 @@
-local DC           = require("__IR3_Assets_mining_drills__/prototypes/lib/drill_common")
+local drill_common = require("__IR3_Assets_mining_drills__/prototypes/lib/drill_common")
 
 local footprint    = settings.startup["IR3-big-drill-footprint"]
     and settings.startup["IR3-big-drill-footprint"].value or "5x5"
@@ -9,7 +9,7 @@ local SPRITE_SCALE = is7 and BASE_SCALE or (BASE_SCALE * (5 / 7))
 local SHIFT_FACTOR = is7 and 1 or (5 / 7)
 
 local function scale_drill_graphics(gs)
-    return DC.scale_drill_graphics(gs, SPRITE_SCALE, SHIFT_FACTOR)
+    return drill_common.scale_drill_graphics(gs, SPRITE_SCALE, SHIFT_FACTOR)
 end
 
 local extent                          = is7 and 7 or 5
@@ -140,7 +140,7 @@ entity.drawing_box_vertical_extension = 1
 entity.integration_patch              = nil
 
 entity.circuit_connector              =
-    circuit_connector_definitions.create_vector(universal_connector_template, DC.connector_vectors_for(extent))
+    circuit_connector_definitions.create_vector(universal_connector_template, drill_common.connector_vectors_for(extent))
 
 entity.input_fluid_box                = {
     volume = 200,
@@ -1321,9 +1321,11 @@ entity.wet_mining_graphics_set        = scale_drill_graphics({
     },
 })
 
-entity.vector_to_place_result         = vector_to_place
+drill_common.add_flipped_graphics(entity)
 
-entity.working_sound                  = {
+entity.vector_to_place_result = vector_to_place
+
+entity.working_sound          = {
     fade_in_ticks = 10,
     fade_out_ticks = 30,
     sound = { filename = "__IndustrialRevolution3Assets1__/sound/heavy-drill.ogg", volume = 0.2 }

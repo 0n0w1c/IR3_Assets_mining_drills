@@ -1,18 +1,18 @@
-require("__IR3_Assets_mining_drills__/prototypes/lib/drill_common")
+local drill_common                  = require("__IR3_Assets_mining_drills__/prototypes/lib/drill_common")
 
-local entity                  = table.deepcopy(data.raw["mining-drill"]["pumpjack"])
+local entity                        = table.deepcopy(data.raw["mining-drill"]["pumpjack"])
 
-entity.name                   = "steel-derrick"
-entity.icon                   = "__IndustrialRevolution3Assets1__/graphics/icons/64/steel-derrick.png"
-entity.resource_categories    = { "gas" }
-entity.minable                = { mining_time = 0.5, result = "steel-derrick" }
-entity.base_picture           = nil
-entity.fast_replaceable_group = "derricks"
-entity.corpse                 = "medium-remnants"
-entity.dying_explosion        = "steel-derrick-explosion"
-entity.vector_to_place_result = { 0, 0 }
+entity.name                         = "steel-derrick"
+entity.icon                         = "__IndustrialRevolution3Assets1__/graphics/icons/64/steel-derrick.png"
+entity.resource_categories          = { "gas" }
+entity.minable                      = { mining_time = 0.5, result = "steel-derrick" }
+entity.fast_replaceable_group       = "derricks"
+entity.corpse                       = "medium-remnants"
+entity.dying_explosion              = "steel-derrick-explosion"
+entity.vector_to_place_result       = { 0, 0 }
+entity.migrate_horizontal_mirroring = true
 
-entity.circuit_connector      = circuit_connector_definitions.create_vector(universal_connector_template,
+entity.circuit_connector            = circuit_connector_definitions.create_vector(universal_connector_template,
     {
         { variation = 27, main_offset = util.by_pixel(-22.625, -21.875), shadow_offset = util.by_pixel(-22.625, -21.875), show_shadow = true },
         { variation = 27, main_offset = util.by_pixel(-22.625, -21.875), shadow_offset = util.by_pixel(-22.625, -21.875), show_shadow = true },
@@ -21,7 +21,7 @@ entity.circuit_connector      = circuit_connector_definitions.create_vector(univ
     }
 )
 
-entity.damaged_trigger_effect = {
+entity.damaged_trigger_effect       = {
     {
         damage_type_filters = {
             "fire",
@@ -66,7 +66,7 @@ entity.damaged_trigger_effect = {
     }
 }
 
-entity.graphics_set           = {
+entity.graphics_set                 = {
     animation = {
         east = {
             layers = {
@@ -406,7 +406,9 @@ entity.graphics_set           = {
     }
 }
 
-entity.output_fluid_box       = {
+drill_common.add_flipped_graphics(entity)
+
+entity.output_fluid_box = {
     volume = 200,
     production_type = "output",
     pipe_connections = {

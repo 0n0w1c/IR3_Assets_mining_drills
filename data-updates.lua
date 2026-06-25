@@ -8,8 +8,8 @@ if not (
 end
 
 local recycling
-if mods["quality"] then
-    recycling = require("__quality__/prototypes/recycling")
+if mods["recycler"] then
+    recycling = require("__recycler__.recycling")
 end
 
 local function generate_recycling_recipe(name)

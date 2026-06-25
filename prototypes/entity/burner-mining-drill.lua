@@ -1,4 +1,4 @@
-local DC           = require("__IR3_Assets_mining_drills__/prototypes/lib/drill_common")
+local drill_common = require("__IR3_Assets_mining_drills__/prototypes/lib/drill_common")
 
 local footprint    = settings.startup["IR3-burner-drill-footprint"]
     and settings.startup["IR3-burner-drill-footprint"].value or "2x2"
@@ -9,7 +9,7 @@ local SPRITE_SCALE = is5 and BASE_SCALE or (BASE_SCALE * (2 / 5))
 local SHIFT_FACTOR = is5 and 1 or (2 / 5)
 
 local function scale_drill_graphics(gs)
-    return DC.scale_drill_graphics(gs, SPRITE_SCALE, SHIFT_FACTOR)
+    return drill_common.scale_drill_graphics(gs, SPRITE_SCALE, SHIFT_FACTOR)
 end
 
 local extent                    = is5 and 5 or 2
@@ -105,7 +105,7 @@ entity.damaged_trigger_effect         = {
 }
 
 entity.circuit_connector              =
-    circuit_connector_definitions.create_vector(universal_connector_template, DC.connector_vectors_for(extent))
+    circuit_connector_definitions.create_vector(universal_connector_template, drill_common.connector_vectors_for(extent))
 
 entity.energy_source.light_flicker    = {
     color = { r = 0, g = 0, b = 0, a = 0 }
@@ -406,9 +406,11 @@ entity.graphics_set                   = scale_drill_graphics({
 })
 
 entity.resource_searching_radius      = resource_searching_radius
-entity.vector_to_place_result         = vector_to_place
+drill_common.add_flipped_graphics(entity)
 
-entity.working_sound                  = {
+entity.vector_to_place_result = vector_to_place
+
+entity.working_sound          = {
     sound = {
         {
             filename = "__base__/sound/burner-mining-drill-1.ogg",

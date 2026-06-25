@@ -130,4 +130,16 @@ function LIB.scale_drill_graphics(graphics_set, target_scale, shift_factor)
     return scaled
 end
 
+function LIB.add_flipped_graphics(entity)
+    entity.use_mirroring = true
+
+    if entity.graphics_set and not entity.graphics_set_flipped then
+        entity.graphics_set_flipped = table.deepcopy(entity.graphics_set)
+    end
+
+    if entity.wet_mining_graphics_set and not entity.wet_mining_graphics_set_flipped then
+        entity.wet_mining_graphics_set_flipped = table.deepcopy(entity.wet_mining_graphics_set)
+    end
+end
+
 return LIB
